@@ -1,6 +1,6 @@
 class ItemCardapio:
     def __init__(self,nome,preco):
         self._nome = nome
-        self._nome = preco
+        self.preco = preco
 
     
