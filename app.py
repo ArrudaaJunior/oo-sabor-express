@@ -1,4 +1,5 @@
 import requests
+import json
 
 from modelos.restaurante import Restaurante
 from modelos.cardapio.bebiba import Bebida
@@ -23,7 +24,10 @@ if reponse.status_code == 200:
 else:
     print(f'O erro foi {reponse.status_code}')
 
-print(dados_restaurante['McDonald’s'])
+for nome_restaurante, dados in dados_restaurante.items():
+    nome_do_arquivo = f'{nome_restaurante}.json'
+    with open(nome_do_arquivo, 'w') as arquivo_restaurante:
+        json.dump(dados, arquivo_restaurante,indent=4)
 
 restaurante_praca = Restaurante('Praça', 'Gourmet')
 bebida_suco = Bebida('Suco de Melancia', 4.0, 'grande')
